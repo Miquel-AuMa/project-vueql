@@ -21,29 +21,12 @@
 </template>
 
 <script>
+import ApolloClient from 'apollo-boost'
 
-import axios from 'axios'
-
-export default {
-  name: 'app',  data () {
-    return {
-      example1: ''
-    }
-  },  methods: {
-    async getLanguage () {
-      try {
-        const res = await axios.post(
-          'https://countries.trevorblades.com/', {
-          query: '{country(code: "ES"){name}'
-        })
-        console.log(res)
-        this.example1 = res.data.data.language
-      } catch (e) {
-        console.log('err', e)
-      }
-    }
-  }
-}
+const apolloClient = new ApolloClient({
+  // You should use an absolute URL here
+  uri: 'https://countries.trevorblades.com/'
+})
 
 </script>
 
